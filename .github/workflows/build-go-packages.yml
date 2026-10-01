@@ -1,12 +1,12 @@
 name: Generate Go package
-run-name: Generate Go ${{ inputs.VERSION || '1.19.0' }}
+run-name: Generate Go ${{ inputs.VERSION || '1.27.0' }}
 on:
   workflow_dispatch:
     inputs:
       VERSION:
         description: 'Go version to build and upload'
         required: true
-        default: '1.19.0'
+        default: '1.27.0'
       PUBLISH_RELEASES:
         description: 'Whether to publish releases'
         type: boolean
@@ -23,9 +23,9 @@ on:
 jobs:
   go:
     name: Go
-    uses: actions/versions-package-tools/.github/workflows/build-tool-packages.yml@main
+    uses: v-priyagupta108/versions-package-tools/.github/workflows/build-tool-packages.yml@checksum-format
     with:
       tool-name: "go"
-      tool-version: ${{ inputs.VERSION || '1.19.0' }}
+      tool-version: ${{ inputs.VERSION || '1.27.0' }}
       publish-release: ${{ inputs.PUBLISH_RELEASES || false }}
     secrets: inherit
